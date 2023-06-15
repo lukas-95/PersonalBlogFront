@@ -69,7 +69,7 @@ export default function SearchAppBar() {
   const classes = useStyles();
 
   return (
-    
+    <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -98,7 +98,6 @@ export default function SearchAppBar() {
           </div>
         </Toolbar>
       </AppBar>
-    
+    </div>
   );
 }
-export default SearchAppBar;

@@ -5,11 +5,12 @@ import './App.css'
 import { Grid } from "@material-ui/core";
 import Home from './pages/home/Home';
 import About from './pages/about/About';
+import SearchAppBar from './components/statics/navbar/Navbar';
 
 function App() {
   return (
     <>
-      <Navbar />
+      <SearchAppBar />
       <Home />
       <Footer />
     </>
