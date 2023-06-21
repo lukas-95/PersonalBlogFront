@@ -113,7 +113,7 @@ export default function Navbar() {
           >
             <MenuIcon />
           </IconButton>
-          <Box style={{ cursor: "pointer" }}>
+          <Box className='cursor'>
             <Typography variant="h5" color="inherit">
               BlogPessoal
             </Typography>
@@ -121,30 +121,30 @@ export default function Navbar() {
 
           <Box display="flex" justifyContent="start">
             <Link to="/home" className="text-decorator-none">
-              <Box mx={1} style={{ cursor: "pointer" }}>
+              <Box mx={1} className='cursor'>
                 <Typography variant="h6" color="inherit">
                   home
                 </Typography>
               </Box>
             </Link>
 
-            <Box mx={1} style={{ cursor: "pointer" }}>
+            <Box mx={1} className='cursor'>
               <Typography variant="h6" color="inherit">
                 postagens
               </Typography>
             </Box>
-            <Box mx={1} style={{ cursor: "pointer" }}>
+            <Box mx={1} className='cursor'>
               <Typography variant="h6" color="inherit">
                 temas
               </Typography>
             </Box>
-            <Box mx={1} style={{ cursor: "pointer" }}>
+            <Box mx={1} className='cursor'>
               <Typography variant="h6" color="inherit">
                 cadastrar tema
               </Typography>
             </Box>
             <Link to="/login" className="text-decorator-none">
-              <Box mx={1} style={{ cursor: "pointer", color: "white" }}>
+              <Box mx={1} className='cursor'>
                 <Typography variant="h6" color="inherit">
                   logout
                 </Typography>
