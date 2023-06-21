@@ -1,3 +1,22 @@
+.grid-color{
+    background-color: #135546
+}
+
+.title{
+    color: white !important;
+    font-weight: 'bold' !important;
+}
+
+.button{
+    border-color: white !important;
+    background-color: #3F51B5;
+    color: white !important;
+}
+
+.posts{
+    background-color: white
+}
+
 .img{
     width: 300px;
     height: 300px;

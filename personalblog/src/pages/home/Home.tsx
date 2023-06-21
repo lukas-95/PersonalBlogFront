@@ -1,55 +1,34 @@
-import React from "react";
 import "./Home.css";
 import { Grid, Typography, Button} from "@material-ui/core";
 import { Box } from "@mui/material";
+import TabPostagem from "../postagem/tabpostagem/TabPostagem.tsx";
 
 
 function Home() {
   return (
     <>
-    <Grid container direction="row" justifyContent="center" alignItems="center" style={{ backgroundColor: "#135546" }}>
+    <Grid container direction="row" justifyContent="center" alignItems="center" className="grid-color">
                 <Grid alignItems="center" item xs={6}>
                     <Box paddingX={20} >
-                        <Typography variant="h3" gutterBottom color="textPrimary" component="h3" align="center" style={{ color: "white", fontWeight: "bold" }}>Seja bem vindo(a)!</Typography>
-                        <Typography variant="h5" gutterBottom color="textPrimary" component="h5" align="center" style={{ color: "white", fontWeight: "bold" }}>expresse aqui os seus pensamentos e opiniões!</Typography>
+                        <Typography variant="h3" gutterBottom color="textPrimary" component="h3" align="center" className="title">Welcome!</Typography>
+                        <Typography variant="h5" gutterBottom color="textPrimary" component="h5" align="center" className="title">Share something interesting!</Typography>
                     </Box>
                     <Box display="flex" justifyContent="center">
                         <Box marginRight={1}>
                         </Box>
-                        <Button variant="outlined" style={{ borderColor: "white", backgroundColor: "#3F51B5", color: "white" }}>Ver Postagens</Button>
+                        <Button variant="outlined" className="button">Ver Postagens</Button>
                     </Box>
                 </Grid>
                 <Grid item xs={6} >
                     <img src="https://i.imgur.com/H88yIo2.png" alt="" width="500px" height="500px" />
                 </Grid>
-                <Grid xs={12} style={{ backgroundColor: "white" }}>
+                <Grid xs={12} className="posts">
+                    <TabPostagem/>
+
                 </Grid>
             </Grid>
     </>
 
-    // <>
-
-    //  { <Grid container spacing={2}>
-    //     <Grid item xs={12} sm={8}>
-    //       <Paper style={{ height: "100vh", background: "lightgrey" }}>
-    //         <h1>hello world</h1>
-    //         <img src="https://i.imgur.com/H88yIo2.png" width="200" alt="" />
-    //       </Paper>
-    //     </Grid>
-    //     <Grid item container direction="column" xs={12} sm={4}>
-    //       <Grid item>
-    //         <Paper style={{ height: "49vh", background: "red " }}>
-    //           <h1>hello world</h1>
-    //         </Paper>
-    //       </Grid>
-    //       <Grid item>
-    //         <Paper style={{ height: "49vh", background: "green " }}>
-    //           <h1>hello world</h1>
-    //         </Paper>
-    //       </Grid>
-    //     </Grid>
-    //   </Grid> }
-    // </>
   );
 }
 
