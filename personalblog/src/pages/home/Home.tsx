@@ -1,7 +1,7 @@
 import "./Home.css";
 import { Grid, Typography, Button} from "@material-ui/core";
 import { Box } from "@mui/material";
-import TabPostagem from "../postagem/tabpostagem/TabPostagem.tsx";
+import TabPostagem from "../../components/postagens/tabpostagem/TabPostagem.tsx";
 
 
 function Home() {
