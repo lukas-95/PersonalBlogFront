@@ -6,8 +6,8 @@ import Navbar from './components/statics/navbar/Navbar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './pages/login/Login';
 import CadastroUsuario from "./pages/cadastroUsuario/CadastroUsuario.tsx";
-import ListaTema from "./pages/temas/listatema/ListaTema.tsx";
-import ListaPostagem from "./pages/postagem/listapostagem/ListaPostagem.tsx";
+import ListaTema from "./components/temas/listatema/ListaTema.tsx";
+import ListaPostagem from "./components/postagens/listapostagem/ListaPostagem.tsx";
 function App() {
     return (
         <BrowserRouter>
