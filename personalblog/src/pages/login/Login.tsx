@@ -93,28 +93,20 @@ export default function Login() {
               
             </Box>
           </form>
-          <Box display="flex" justifyContent="center" marginTop={2}>
-            <Box marginRight={1}>
-              <Typography variant="subtitle1" gutterBottom align="center">
-                {" "}
-                Não tem uma conta ?
-              </Typography>
-            </Box>
-            <Link to="/cadastrousuario">
-              <Typography
-                variant="subtitle1"
-                gutterBottom
-                align="center"
-                className="text"
-              >
-                {" "}
-                Cadastre-se agora mesmo
-              </Typography>
-            </Link>
-          </Box>
-        </Box>
-      </Grid>
-      <Grid item xs={6} className="image"></Grid>
-    </Grid>
+          <Box display='flex' justifyContent='center' marginTop={2}>
+                        <Box marginRight={1}>
+                            <Typography variant='subtitle1' gutterBottom align='center'>Não tem uma conta?</Typography>
+                        </Box>
+                        <Link to='/cadastrousuario'>
+                            <Typography variant='subtitle1' gutterBottom align='center' className='textos1'>Cadastre-se</Typography>
+                        </Link>
+                            
+                    </Box>
+                </Box>
+            </Grid>
+            <Grid xs={6} className='imagem'>
+
+            </Grid>
+        </Grid>
   );
 }
