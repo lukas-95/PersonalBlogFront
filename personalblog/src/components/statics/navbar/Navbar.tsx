@@ -83,8 +83,6 @@ export default function Navbar() {
     
   }
 
-
-
   const classes = useStyles(); 
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -101,6 +99,7 @@ export default function Navbar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <div className={classes.root}>
       <FormGroup>
@@ -136,7 +135,7 @@ export default function Navbar() {
               </Box>
             </Link>
 
-            <Link to="/postagens" className="text-decorator-none">
+            <Link to="/posts" className="text-decorator-none">
 
             <Box mx={1} className='cursor'>
               <Typography variant="h6" color="inherit">
@@ -153,7 +152,7 @@ export default function Navbar() {
             </Box>
             </Link>
 
-            <Link to="/temas" className="text-decorator-none">
+            <Link to="/formularioTema" className="text-decorator-none">
             <Box mx={1} className='cursor'>
               <Typography variant="h6" color="inherit">
                 cadastrar tema
