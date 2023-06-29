@@ -1,17 +1,17 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import "./Login.css";
 import { Grid, Box, Typography, TextField, Button } from "@material-ui/core";
 import { Link, useNavigate } from "react-router-dom";
-import Skills from "../../assets/Banner-linkedIn-com-gradiente-prisma.svg"; // Import using relative path
-import useLocalStorage from "react-use-localstorage";
 import UserLogin from "../../models/UserLogin";
 import { login } from "../../services/service";
-import CadastroUsuario from "../cadastroUsuario/CadastroUsuario.tsx";
+import {useDispatch} from "react-redux";
+import {addToken} from "../../store/tokens/action.ts";
 
 export default function Login() {
   let navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const [token, setToken] = useLocalStorage('token');
+  const [token, setToken] = useState('');
   const [userLogin, setUserLogin] = useState<UserLogin>({
     id: 0,
     usuario: "",
@@ -29,6 +29,7 @@ export default function Login() {
 
   useEffect(() => {
     if (token != "") {
+      dispatch(addToken(token))
       navigate("/home");
     }
   }, [token]);
