@@ -11,7 +11,9 @@ import { Box, FormControlLabel, FormGroup, Switch } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import './Navbar.css'
 import { useNavigate } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
+import {useDispatch, useSelector} from "react-redux";
+import {TokenState} from "../../../store/tokens/tokensReducer.ts";
+import {addToken} from "../../../store/tokens/action.ts";
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -73,11 +75,13 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function Navbar() {
 
-  const [token, setToken] = useLocalStorage('token')
   let navigate = useNavigate();
-
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+      (state) => state.tokens
+  );
+  const dispatch = useDispatch();
   function goLogout() {
-    setToken('')
+    dispatch(addToken(''))
     alert("Tchau, até logo mais")
     navigate('/login')
     
@@ -100,94 +104,105 @@ export default function Navbar() {
     setAnchorEl(null);
   };
 
+  var navbarComponent;
+
+
+  if (token != ''){
+
+    navbarComponent =
+        <div className={classes.root}>
+          <FormGroup>
+            <FormControlLabel
+                control={
+                  <Switch
+                      checked={auth}
+                      onChange={handleChange}
+                      aria-label="login switch"
+                  />
+                }
+                label={auth ? "Logout" : "Login"}
+            />
+          </FormGroup>
+          <AppBar position="static">
+            <Toolbar>
+              <IconButton
+                  edge="start"
+                  className={classes.menuButton}
+                  color="inherit"
+                  aria-label="open drawer"
+              >
+                <MenuIcon />
+              </IconButton>
+
+
+              <Box display="flex" justifyContent="start">
+                <Link to="/home" className="text-decorator-none">
+                  <Box mx={1} className='cursor'>
+                    <Typography variant="h6" color="inherit">
+                      home
+                    </Typography>
+                  </Box>
+                </Link>
+
+                <Link to="/posts" className="text-decorator-none">
+
+                  <Box mx={1} className='cursor'>
+                    <Typography variant="h6" color="inherit">
+                      postagens
+                    </Typography>
+                  </Box>
+                </Link>
+
+                <Link to="/temas" className="text-decorator-none">
+                  <Box mx={1} className='cursor'>
+                    <Typography variant="h6" color="inherit">
+                      temas
+                    </Typography>
+                  </Box>
+                </Link>
+
+                <Link to="/formularioTema" className="text-decorator-none">
+                  <Box mx={1} className='cursor'>
+                    <Typography variant="h6" color="inherit">
+                      cadastrar tema
+                    </Typography>
+                  </Box>
+                </Link>
+
+
+
+                <Box onClick={goLogout} mx={1} className='cursor'>
+                  <Typography variant="h6" color="inherit">
+                    logout
+                  </Typography>
+                </Box>
+
+
+
+              </Box>
+
+
+              <div className={classes.search}>
+                <div className={classes.searchIcon}>
+                  <SearchIcon />
+                </div>
+                <InputBase
+                    placeholder="Search…"
+                    classes={{
+                      root: classes.inputRoot,
+                      input: classes.inputInput,
+                    }}
+                    inputProps={{ "aria-label": "search" }}
+                />
+              </div>
+            </Toolbar>
+          </AppBar>
+        </div>
+  }
+
   return (
-    <div className={classes.root}>
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <Switch
-              checked={auth}
-              onChange={handleChange}
-              aria-label="login switch"
-            />
-          }
-          label={auth ? "Logout" : "Login"}
-        />
-      </FormGroup>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
-          
-
-          <Box display="flex" justifyContent="start">
-            <Link to="/home" className="text-decorator-none">
-              <Box mx={1} className='cursor'>
-                <Typography variant="h6" color="inherit">
-                  home
-                </Typography>
-              </Box>
-            </Link>
-
-            <Link to="/posts" className="text-decorator-none">
-
-            <Box mx={1} className='cursor'>
-              <Typography variant="h6" color="inherit">
-                postagens
-              </Typography>
-            </Box>
-            </Link>
-
-            <Link to="/temas" className="text-decorator-none">
-            <Box mx={1} className='cursor'>
-              <Typography variant="h6" color="inherit">
-                temas
-              </Typography>
-            </Box>
-            </Link>
-
-            <Link to="/formularioTema" className="text-decorator-none">
-            <Box mx={1} className='cursor'>
-              <Typography variant="h6" color="inherit">
-                cadastrar tema
-              </Typography>
-            </Box>
-            </Link>
-
-
-           
-              <Box onClick={goLogout} mx={1} className='cursor'>
-                <Typography variant="h6" color="inherit">
-                  logout
-                </Typography>
-              </Box>
-            
-
-
-          </Box>
-          
-
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div>
-        </Toolbar>
-      </AppBar>
-    </div>
+      <>
+        {navbarComponent}
+      </>
   );
 }
