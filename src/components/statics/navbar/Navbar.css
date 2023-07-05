@@ -1,8 +1,58 @@
 .cursor{
     cursor: pointer;
-    color: white;
+
 }
 
-.text-decorator-none{
-    text-decoration: none;
+.fundoappbar{
+    background-color: #42a1cad5 !important;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+
+}
+
+.fundoNavbar{
+    background-color: rgb(250, 253, 255);
+    color: rgb(252, 251, 251) !important;
+    position: sticky;
+}
+
+
+
+.profile{
+
+}
+
+.searchPosition{
+    margin-left: auto;
+    
+}
+
+.navigation{
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent !important;
+    color: #000000 !important;    
+}
+
+.navigationBtnCor .Mui-selected{
+      color: #ffffff !important;
+}
+.navigation .Mui-selected .MuiSvgIcon-root{
+    fill: #ffffff !important;    
+}
+
+.botoes{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    color: white;
+    
+}
+
+.actionNav{
+    color: white !important;
+    
 }

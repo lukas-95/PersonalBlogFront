@@ -4,6 +4,7 @@ import React, {ChangeEvent, useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {cadastroUsuario} from "../../services/service.ts";
 import User from "../../models/User.ts";
+import { toast } from 'react-toastify';
 
 export default function CadastroUsuario() {
 
@@ -47,12 +48,85 @@ export default function CadastroUsuario() {
 
     }
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
-        e.preventDefault()
+        if (user.nome.length < 3) {
+            toast.info('O nome deve ter pelo menos 3 caracteres.', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined   
+               });
+            return;
+        }
+
+        if (!user.usuario.includes('@') && !user.usuario.includes('.')) {
+            toast.info('e-mail inválido para cadastro', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined   
+               });
+            return;
+        }
+
+        if (user.usuario.length <= 6){
+            toast.info('digite no mínimo 6 caracteres no seu usuario.', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined   
+               });
+            return;
+        }
+
+        if (user.senha.length < 8) {
+            toast.info('A senha deve ter pelo menos 8 caracteres.', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined   
+               });
+            return;
+        }
+
         if(confirmarSenha == user.senha){
-            cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
-            alert('Parabéns agora você faz aprte da comunidade')
+        cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
+        toast.success('Sucesso, bem vindo a LadyLink.', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            theme: "colored",
+            progress: undefined   
+           });
         }else{
-            alert('Oops. Algo está errado, verifica novamente as as informações.')
+            toast.info('Oops, as senhas não são as mesmas.', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined   
+               });
         }
     }
 
